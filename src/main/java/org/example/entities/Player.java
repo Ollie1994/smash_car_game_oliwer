@@ -18,29 +18,64 @@ import org.example.objects.vehicles.Vehicle;
 // TODO: behaviour to the current PowerUp object. The PowerUp object should act as a strategy for handling damage.
 
 public class Player extends GameObject{
-    private int health;
-    private PlayerVehicle vehicle;
+    private PlayerHealth health;
+    private PlayerVehicle playerVehicle;
     private PowerUp powerUp;
+    private PlayerState playerState;
+    private boolean isAlive = true;
+    private int playerCash = 0;
 
-    public Player(int health, PlayerVehicle vehicle) {
-        this.health = health;
-        this.vehicle = vehicle;
+
+    public void drive() {
+        System.out.println("Player is driving the vehicle.");
     }
 
-    public int getHealth() {
+    // User tar skada av SideObjects
+    // Tjäna cash beroende på SideObjects cash
+    // SideObject.Count (antal kollisioner) ska öka för SideObjects
+    //
+    public void applyDamage(int damage, int cash) {
+        System.out.println("Player applied damage");
+
+        int currentHealth = getPlayerHealth().getHealthUnits();
+        System.out.println("Current health: " + currentHealth);
+        setPlayerHealth(new PlayerHealth(currentHealth - damage));
+        System.out.println("Health set to: " + getPlayerHealth());
+        setPlayerCash(playerCash + cash);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // ------------------- G S C ------------------------------
+
+    public Player(int health, PlayerVehicle vehicle) {
+        this.health.setHealthUnits(health);
+        this.playerVehicle = vehicle;
+    }
+
+    public PlayerHealth getPlayerHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setPlayerHealth(PlayerHealth health) {
         this.health = health;
     }
 
-    public PlayerVehicle getVehicle() {
-        return vehicle;
+    public PlayerVehicle getPlayerVehicle() {
+        return playerVehicle;
     }
 
-    public void setVehicle(PlayerVehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setPlayerVehicle(PlayerVehicle playerVehicle) {
+        this.playerVehicle = playerVehicle;
     }
 
     public PowerUp getPowerUp() {
@@ -49,5 +84,29 @@ public class Player extends GameObject{
 
     public void setPowerUp(PowerUp powerUp) {
         this.powerUp = powerUp;
+    }
+
+    public PlayerState getPlayerState() {
+        return playerState;
+    }
+
+    public void setPlayerState(PlayerState playerState) {
+        this.playerState = playerState;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
+
+    public int getPlayerCash() {
+        return playerCash;
+    }
+
+    public void setPlayerCash(int playerCash) {
+        this.playerCash = playerCash;
     }
 }

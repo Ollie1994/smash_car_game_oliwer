@@ -3,7 +3,9 @@ package org.example.core;
 import org.example.entities.GameObject;
 import org.example.entities.Player;
 import org.example.objects.powerUps.PowerUp;
+import org.example.objects.powerUps.PowerUpFactory;
 import org.example.objects.sideObjects.SideObject;
+import org.example.objects.sideObjects.SideObjectFactory;
 import org.example.objects.vehicles.Sedan;
 import org.example.objects.vehicles.Van;
 import org.example.objects.vehicles.Vehicle;
@@ -145,6 +147,7 @@ public class Scene {
 
     private void generatePowerups() {
         int spawnIndex = 0;
+        //Mindre chans att få powerup ju mer liv du har
         switch(player.getPlayerHealth().getPlayerState()) {
             case HEALTHY:
                 spawnIndex = RandomGenerator.getInstance().nextInt(10);

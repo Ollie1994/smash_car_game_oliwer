@@ -1,5 +1,10 @@
 package org.example.objects.sideObjects;
 
+import org.example.objects.powerUps.PowerUp;
+import org.example.utils.Callback;
+
+import java.util.HashMap;
+
 public class SideObjectFactory {
     /**
      * TODO:
@@ -32,4 +37,32 @@ public class SideObjectFactory {
      * This prevents crashes and errors
      */
 
+    private static HashMap<Integer, SideObject> sideObjectMap = new HashMap<Integer, SideObject>();
+
+    public static SideObjectFactory getInstance() {
+        return new SideObjectFactory();
+    }
+
+
+    // Callback System: Stores recipes for creating each object type
+    // Add new object types to the factory
+    public void registerCallback(int key, Callback callback) {
+        sideObjectMap.put(1, new FireHydrant(10, 10));
+        sideObjectMap.put(2, new LetterBox(5, 5));
+        sideObjectMap.put(3, new NullSideObject());
+    }
+
+    // Registration: Add new object types to the factory
+    // Creation: Request objects by their ID number
+    // Produce objects by their key number
+    public SideObject createSideObject(int key) {
+
+        SideObject currentObject = sideObjectMap.get(key);
+
+        if (currentObject == null) {
+            return null;
+        } else {
+            return currentObject;
+        }
+    }
 }

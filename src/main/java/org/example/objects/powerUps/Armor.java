@@ -5,6 +5,8 @@ import org.example.entities.GameObject;
 import org.example.entities.Player;
 
 public class Armor extends PowerUp{
+
+    private GameManager gameManager;
     /**
      *Purpose: A concrete power-up that reduces incoming damage.
      * Its ApplyPowerup method calculates damage differently: (vehicle strength + damage / 2).
@@ -23,7 +25,9 @@ public class Armor extends PowerUp{
         player.getPlayerHealth().setHealthUnits(newHealth);
 
         // add cash through the proper economy system
-        GameManager.getInstance().getCash().addCash(cash);
+        //GameManager.getInstance().getCash().addCash(cash);
+        gameManager.getCashManager().addCash(cash);
+
 
         // decrement countdown and remove powerup if expired
         if (--countdown == 0) {

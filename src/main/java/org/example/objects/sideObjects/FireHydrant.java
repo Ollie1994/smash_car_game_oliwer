@@ -26,10 +26,10 @@ public class FireHydrant extends SideObject{
             Player player = (Player)other;
             if(count == 0){
                 System.out.println("#### COLLISION ->[FireHydrant] Fountain");
-                player.ApplyDamage(getDamage(), getCash());
+                player.applyDamage(getDamage(), getCash());
             }else{
                 System.out.println("#### COLLISION ->[FireHydrant] Collided again");
-                player.ApplyDamage(getDamage(), getCash() * count);
+                player.applyDamage(getDamage(), getCash() * count);
             }
         }
     }

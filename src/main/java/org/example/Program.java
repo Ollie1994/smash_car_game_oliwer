@@ -3,6 +3,7 @@ package org.example;
 import org.example.core.GameManager;
 import org.example.objects.sideObjects.FireHydrant;
 import org.example.objects.sideObjects.LetterBox;
+import org.example.objects.sideObjects.SideObjectFactory;
 
 /**
  * Main entry point for the Driving Game application.
@@ -15,8 +16,8 @@ public class Program {
      * This method sets up the necessary callbacks for object creation.
      */
     private static void Initialize() {
-        SideObjectFactory.GetInstance().RegisterCallback(0, ()-> {return new LetterBox(8, 13);});
-        SideObjectFactory.GetInstance().RegisterCallback(1, ()-> {return new FireHydrant(5, 10);});
+        SideObjectFactory.getInstance().registerCallback(0, ()-> {return new LetterBox(8, 13);});
+        SideObjectFactory.getInstance().registerCallback(1, ()-> {return new FireHydrant(5, 10);});
 
         System.out.println("Game initialized and ready to start!");
     }

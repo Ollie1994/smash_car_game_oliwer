@@ -28,7 +28,7 @@ public class NullSideObject extends SideObject {
 
     private static final NullSideObject INSTANCE = new NullSideObject();
 
-    private NullSideObject() {
+    protected NullSideObject() {
         super(0, 0); // no damage, no cash
         setName("NullSideObject");
         setEnabled(false); // not enabled since it's a null object

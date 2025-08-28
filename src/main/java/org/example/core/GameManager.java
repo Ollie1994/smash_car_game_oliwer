@@ -1,5 +1,6 @@
 package org.example.core;
 
+import org.example.cash.CashManager;
 import org.example.entities.Player;
 import org.example.entities.PlayerVehicle;
 
@@ -13,7 +14,8 @@ import org.example.entities.PlayerVehicle;
 public class GameManager {
     // Singleton Pattern - this part is actually good...
     private static GameManager instance = new GameManager();
-    private int cash;
+    public CashManager cashManager = new CashManager();
+    //private int cash;
 
     private GameManager() {
         // private constructor for singleton
@@ -23,13 +25,17 @@ public class GameManager {
         return instance;
     }
 
-    public int getCash() {
+    public CashManager getCashManager() {
+        return cashManager;
+    }
+
+    /*public int getCash() {
         return cash;
     }
 
     public void addCash(int amount) {
         cash += amount;
-    }
+    }*/
 
     public void newGame() {
         System.out.println("🎮 NEW GAME STARTED 🎮");
@@ -60,7 +66,7 @@ public class GameManager {
             // managing game state display
             System.out.printf("📊 Health=%d, Cash=%d, PowerUp=%s%n",
                     player.getPlayerHealth().getHealthUnits(),
-                    cash,
+                    cashManager.getCash(),
                     player.getPowerUp().toString());
 
             try { Thread.sleep(800); } catch (InterruptedException e) {}
@@ -72,6 +78,6 @@ public class GameManager {
 
     public void endGame() {
         System.out.println("\n💀 GAME OVER 💀");
-        System.out.printf("Total cash accumulated: %d%n", cash);
+        System.out.printf("Total cash accumulated: %d%n", cashManager.getCash());
     }
 }
