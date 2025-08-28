@@ -1,7 +1,5 @@
 package org.example.entities;
 
-package org.example.entities;
-
 public class PlayerVehicle {
     /**
      * Purpose: A data container for the vehicle's properties

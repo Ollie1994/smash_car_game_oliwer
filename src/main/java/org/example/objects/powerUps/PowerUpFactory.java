@@ -6,6 +6,6 @@ public class PowerUpFactory {
      * of specific power-up classes based on an input key.
      */
 
-    // TODO: implement DESIGN PATTERN: actory Method Pattern It centralizes the object creation logic.
+    // TODO: implement DESIGN PATTERN: Factory Method Pattern It centralizes the object creation logic.
 
 }
